@@ -31,10 +31,15 @@
 
     <!-- Search Recipe -->
     <div class="search_container flex justify-center items-center mt-2">
-      <form class="w-full max-w-[75%] flex flex-col sm:flex-row" action="">
+      <form
+        id="search_reci"
+        class="w-full max-w-[75%] flex flex-col sm:flex-row"
+        action=""
+      >
         <input
-          class="p-5 border-1 rounded-s-2xl border-[#59595a55] w-full"
+          class="p-5 border-1 rounded-s-2xl border-[#59595a55] w-full focus:outline-none"
           placeholder="Search Your Recipe"
+          name="search"
           type="text"
         />
         <button
@@ -61,12 +66,17 @@
     </div>
 
     <!-- Recipe Item -->
+
     <section
       id="recipeItems"
-      class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-    >
-      sadas
-    </section>
+      class="mt-10 mx-30 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    ></section>
+
+    <section
+      id="popUpModal"
+      class="fixed inset-0 z-50 flex items-center justify-center mx-52 bg:blur hidden"
+    ></section>
+
     <script src="./script/fetchData.js"></script>
   </body>
 </html>
