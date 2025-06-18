@@ -1,12 +1,17 @@
+// Fetch Api
 async function fetchData(url) {
   const URL = url;
   const response = await fetch(URL);
   const data = await response.json();
   let allData = "";
   console.log(data);
-
-  data.meals.forEach((datas) => {
-    allData += `
+  if (data.meals == null) {
+    console.log("nulllllllllllllllllll");
+    document.getElementById("recipeItems").classList.add("hidden");
+    document.getElementById("noData").classList.remove("hidden");
+  } else {
+    data.meals.forEach((datas) => {
+      allData += `
       <div class="mx-4 mb-6">
         <img class="h-50 w-full" src="${datas.strMealThumb}" alt="" />
         <div class="flex flex-col bg-white rounded-xl shadow-md ps-2">
@@ -16,10 +21,12 @@ async function fetchData(url) {
         </div>
         
       </div>`;
-  });
-
-  document.getElementById("recipeItems").innerHTML = allData;
+    });
+    document.getElementById("recipeItems").classList.remove("hidden");
+    document.getElementById("recipeItems").innerHTML = allData;
+  }
 }
+// Show fetch recipe Data
 document.getElementById(
   "recipeItems"
 ).innerHTML = `<div class="flex justify-center ">
@@ -33,6 +40,7 @@ document.getElementById(
 </div>`;
 fetchData("https://www.themealdb.com/api/json/v1/1/search.php?s=");
 
+// Search recipe by api
 document.getElementById("search_reci").addEventListener("submit", (e) => {
   e.preventDefault();
   console.log(e.target.search.value);
@@ -41,7 +49,7 @@ document.getElementById("search_reci").addEventListener("submit", (e) => {
   fetchData(url);
 });
 
-// const viewButtons = document.querySelectorAll(".viewDetails");
+// Modal Function
 function handleView(mealId) {
   console.log(mealId);
   document.getElementById("popUpModal").classList.remove("hidden");
@@ -51,6 +59,7 @@ function handleView(mealId) {
   fetchDataById(mealId);
 }
 
+// Fetch Data By ID
 async function fetchDataById(ids) {
   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${ids}`;
   const response = await fetch(url);
@@ -76,6 +85,24 @@ async function fetchDataById(ids) {
       </div>`;
   });
 }
+
+// Close Modal
 function closeModel() {
   document.getElementById("popUpModal").classList.add("hidden");
 }
+
+// Scroll Up Arrow
+document.getElementById("scrollTopBtn").addEventListener("click", (e) => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
+window.addEventListener("scroll", function () {
+  if (window.scrollY > 300) {
+    document.getElementById("scrollTopBtn").style.display = "block";
+  } else {
+    document.getElementById("scrollTopBtn").style.display = "none";
+  }
+});

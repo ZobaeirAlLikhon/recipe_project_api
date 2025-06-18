@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recipe Projuct with Api</title>
     <link href="./src/output.css" rel="stylesheet" />
+    <!-- Font awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <!-- Logo -->
@@ -44,7 +52,7 @@
         />
         <button
           type="submit"
-          class="bg-yellow-300 text-white p-4 rounded-r-xl w-full sm:w-auto flex items-center justify-center gap-2"
+          class="bg-yellow-300 text-white p-4 mt-5 sm:mt-0 rounded-2xl sm:rounded-none md:rounded-r-2xl w-full sm:w-auto flex items-center justify-center gap-2"
         >
           <!-- Heroicon: Search -->
           <svg
@@ -69,13 +77,24 @@
 
     <section
       id="recipeItems"
-      class="mt-10 mx-30 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+      class="mt-10 mx-10 sm:mx-15 md:mx-30 lg:mx-35 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
     ></section>
+    <div class="flex mt-10">
+      <p id="noData" class="hidden mx-auto text-2xl">No Data Found</p>
+    </div>
 
     <section
       id="popUpModal"
       class="fixed inset-0 z-50 flex items-center justify-center mx-52 bg:blur hidden"
     ></section>
+
+    <!-- Scroll Up Button -->
+    <button
+      id="scrollTopBtn"
+      class="fixed bottom-5 right-5 p-3 bg-blue-300 shadow-md"
+    >
+      <i class="fa-solid fa-square-caret-up"></i>
+    </button>
 
     <script src="./script/fetchData.js"></script>
   </body>
